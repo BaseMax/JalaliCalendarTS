@@ -170,6 +170,15 @@ const firstDayOfYear = (year) => {
     return day;
 };
 
+const firstDayOfMonth = (year, month) => {
+    const default_day = firstDayOfYear(year);
+    const diff = daysOfYearUntilDate(year, month, 1);
+    const day = (default_day + diff - 1) % 7;
+
+    if (day == 0) return 7;
+    return day;
+};
+
 console.log(jalaliDate(2022, 12, 5));
 console.log(daysOfMonth(1401, 9));
 
