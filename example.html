@@ -33,14 +33,16 @@
         const label_numbers_of_days_current_year = document.querySelector(".label-numbers-of-days-current-year");
         
         // Variables
-        const today_date = new Date().toLocaleString("en-US", {timeZone: "Asia/Tehran"});
-        const year = today_date.getFullYear();
-        const month = today_date.getMonth();
-        const day = today_date.getDate();
+        // .toLocaleString("en-US", {timeZone: "Asia/Tehran"});
         // const today_date_jalali = new Date(today_date).toLocaleDateString("fa-IR");
+        const today_date = new Date();
+        const year = new Date().getFullYear();
+        const month = new Date().getMonth();
+        const day = new Date().getDate();
 
         // Labels
-        label_today_date.innerText = jalaliDate(year, month, day);
+        const today = jalaliDate(year, month, day);
+        label_today_date.innerText = `${today["year"]}/${today["month"] < 10 ? "0" + today["month"] : today["month"]}/${today["day"] < 10 ? "0" + today["day"] : today["day"]}`;
         label_first_day_of_year.innerText = firstDayOfYear(year);
         label_first_day_of_week.innerText = firstDayOfMonth(year, month);
         label_numbers_of_days_current_month.innerText = daysOfMonth(year, month);
