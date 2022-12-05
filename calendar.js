@@ -1,9 +1,9 @@
 /**
  * 
- * @Name: Calendar JS
+ * @Name: Jalali Calendar JS
  * @Author: Max Base
  * @Date: 2022/12/05
- * @Repository: https://github.com/BaseMax/CalendarJS
+ * @Repository: https://github.com/BaseMax/JalaliCalendarJS
  * 
  */
 

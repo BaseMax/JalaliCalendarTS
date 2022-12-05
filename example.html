@@ -1,13 +1,48 @@
 <!DOCTYPE html>
-<html lang="fa_IR" dir="rtl">
+<html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Calendar JS</title>
+        <title>Jalali Calendar JS</title>
     </head>
     <body>
-        <!-- TODO -->
+        <h1>Jalali Calendar JS</h1>
+        <p></p>
+
+        <section>
+            <b>Today date: <span class="label-today-date"></span></b>
+            <br>
+            <b>First day of current year: <span class="label-first-day-of-year"></span></b>
+            <br>
+            <b>First day of current week: <span class="label-first-day-of-week"></span></b>
+            <br>
+            <b>Number of days in the current month: <span class="label-numbers-of-days-current-month"></span></b>
+            <br>
+            <b>Number of days in the current year: <span class="label-numbers-of-days-current-year"></span></b>
+            <br>
+        </section>
+
         <script type="text/javascript" src="calendar.js"></script>
+        <script type="text/javascript">
+        // Elements
+        const label_today_date = document.querySelector(".label-today-date");
+        const label_first_day_of_year = document.querySelector("label-first-day-of-year");
+        const label_first_day_of_week = document.querySelector("label-first-day-of-week");
+        const label_numbers_of_days_current_month = document.querySelector("label-numbers-of-days-current-month");
+        const label_numbers_of_days_current_year = document.querySelector("label-numbers-of-days-current-year");
+        
+        // Variables
+        const year = 2022;
+        const month = 12;
+        const day = 5;
+
+        // Labels
+        label_today_date.innerText = jalaliDate(year, month, day);
+        label_first_day_of_year.innerText = firstDayOfYear(year);
+        label_first_day_of_week.innerText = firstDayOfMonth(year, month);
+        label_numbers_of_days_current_month.innerText = daysOfMonth(year, month);
+        label_numbers_of_days_current_year.innerText = daysOfYear(year, month);
+        </script>
     </body>
 </html>
