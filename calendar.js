@@ -22,7 +22,7 @@ const days = {
     5: "چهار شنبه",
     6: "پنج شنبه",
     7: "جمعه",
-}
+};
 
 const months = {
     1: "فروردین",
@@ -41,11 +41,11 @@ const months = {
 
 const isLeapYear = (year) => {
     return year % 4 == 3 ? true : false;
-}
+};
 
 const daysOfYear = (year) => {
     return isLeapYear(year) ? 366 : 365;
-}
+};
 
 const daysOfMonth = (year, month) => {
     // 1-6 : max is 31           / Total ==> 6*31=186
@@ -61,7 +61,7 @@ const daysOfMonth = (year, month) => {
         return 29;
     }
     return null;
-}
+};
 
 const jalaliDate = (year = null, month = null, day = null) => {
 	// if (year === null || month === null || day === null) {
@@ -116,7 +116,7 @@ const daysOfYearUntilDate = (year, month, day) => {
     count_days += day;
 
     return count_days;
-}
+};
 
 const diffDays = (year1, month1, day1, year2, month2, day2) => {
     const count_days1 = daysOfYearUntilDate(year1, month1, day1);
@@ -159,7 +159,7 @@ const diffDays = (year1, month1, day1, year2, month2, day2) => {
         return rem_year1 + count_days2 + sum;
     }
     return diff_day;
-}
+};
 
 const firstDayOfYear = (year) => {
     const default_day = 3; // دو شنبه
@@ -168,7 +168,8 @@ const firstDayOfYear = (year) => {
     const day = (default_day + diff) % 7;
     if (day == 0) return 7;
     return day;
-}
+};
+
 console.log(jalaliDate(2022, 12, 5));
 console.log(daysOfMonth(1401, 9));
 
