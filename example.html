@@ -33,9 +33,11 @@
         const label_numbers_of_days_current_year = document.querySelector(".label-numbers-of-days-current-year");
         
         // Variables
-        const year = 2022;
-        const month = 12;
-        const day = 5;
+        const today_date = new Date().toLocaleString("en-US", {timeZone: "Asia/Tehran"});
+        const year = today_date.getFullYear();
+        const month = today_date.getMonth();
+        const day = today_date.getDate();
+        // const today_date_jalali = new Date(today_date).toLocaleDateString("fa-IR");
 
         // Labels
         label_today_date.innerText = jalaliDate(year, month, day);
