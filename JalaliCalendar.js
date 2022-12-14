@@ -42,7 +42,7 @@ const en2fa = (value) => {
 };
 
 const isLeapYear = (year) => {
-	return year % 4 == 3 ? true : false;
+	return year % 4 === 3 ? true : false;
 };
 
 const daysOfYear = (year) => {
@@ -58,8 +58,8 @@ const daysOfMonth = (year, month) => {
 	if (month > 12 || month < 1) return null;
 	else if (month >= 1 && month <= 6) return 31;
 	else if(month >= 7 && month <= 11) return 30;
-	else if(month == 12) {
-		if (isLeapYear(year) == true) return 30;
+	else if(month === 12) {
+		if (isLeapYear(year) === true) return 30;
 		return 29;
 	}
 	return null;
@@ -126,9 +126,9 @@ const diffDays = (year1, month1, day1, year2, month2, day2) => {
 	const total_days2 = daysOfYear(year2); // 365 or 366
 	const diff_year = Math.abs(year1 - year2);
 
-	if (count_days1 == null || count_days2 == null) return null;
+	if (count_days1 === null || count_days2 === null) return null;
 
-	if (year1 == year2) return Math.abs(count_days2 - count_days1);
+	if (year1 === year2) return Math.abs(count_days2 - count_days1);
 	else if (year1 > year2) {
 		const rem_year2 = total_days2 - count_days2;
 		let sum = 0;
@@ -154,7 +154,7 @@ const firstDayOfYear = (year) => {
 
 	const day = (default_day + diff) % 7;
 
-	if (day == 0) return 7;
+	if (day === 0) return 7;
 	return day;
 };
 
@@ -163,7 +163,7 @@ const firstDayOfMonth = (year, month) => {
 	const diff = daysOfYearUntilDate(year, month, 1);
 	const day = (default_day + diff - 1) % 7;
 
-	if (day == 0) return 7;
+	if (day === 0) return 7;
 	return day;
 };
 
