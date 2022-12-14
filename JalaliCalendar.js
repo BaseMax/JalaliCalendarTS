@@ -7,13 +7,7 @@
  * 
  */
 
-const en2fa = (value) => {
-	return value.toString().replace(/[0-9]/g, (w) => {
-		var persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-		return persianNumbers[+w]
-	});
-};
-
+// Const variables
 const days = {
 	1: "شنبه",
 	2: "یک شنبه",
@@ -37,6 +31,14 @@ const months = {
 	10: "دی",
 	11: "بهمن",
 	12: "اسفند",
+};
+
+// Functions
+const en2fa = (value) => {
+	return value.toString().replace(/[0-9]/g, (w) => {
+		var persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+		return persianNumbers[+w]
+	});
 };
 
 const isLeapYear = (year) => {
@@ -63,12 +65,7 @@ const daysOfMonth = (year, month) => {
 	return null;
 };
 
-const jalaliDate = (year = null, month = null, day = null) => {
-	// if (year === null || month === null || day === null) {
-	// 	year = date("Y");
-	// 	month = date("m");
-	// 	day = date("d");
-	// }
+const jalaliDate = (year, month, day) => {
 	const input = {
 		"year": year,
 		"month": month,
@@ -109,10 +106,10 @@ const jalaliDate = (year = null, month = null, day = null) => {
 const daysOfYearUntilDate = (year, month, day) => {
 	let count_days = 0;
 
-	for (i = 1; i < month; i++) {
-		count_days += daysOfMonth(year, i);
-	}
+	for (i = 1; i < month; i++) count_days += daysOfMonth(year, i);
+
 	if (day > 31 || count_days + day > daysOfYear(year)) return null;
+
 	count_days += day;
 
 	return count_days;
@@ -127,37 +124,27 @@ const diffDays = (year1, month1, day1, year2, month2, day2) => {
 
 	const total_days1 = daysOfYear(year1); // 365 or 366
 	const total_days2 = daysOfYear(year2); // 365 or 366
+	const diff_year = Math.abs(year1 - year2);
 
 	if (count_days1 == null || count_days2 == null) return null;
 
-	// print "count days1: count_days1\n";
-	// print "count days2: count_days2\n";
-
-	// year1: 1401
-	// year2: 1407
-	// diff year: 6
-	// for i 1 to 6:
-	//     dayOfYear(year1 + i)
-	//     dayOfYear(year2 - i)
-
-	const diff_year = Math.abs(year1 - year2);
-	if (year1 == year2) {
-		return Math.abs(count_days2 - count_days1);
-	} else if (year1 > year2) {
+	if (year1 == year2) return Math.abs(count_days2 - count_days1);
+	else if (year1 > year2) {
 		const rem_year2 = total_days2 - count_days2;
 		let sum = 0;
-		for (i = year2 + 1; i < year1; i++) {
-			sum += daysOfYear(i);
-		}
+
+		for (i = year2 + 1; i < year1; i++) sum += daysOfYear(i);
+
 		return rem_year2 + count_days1 + sum;
 	} else if (year1 < year2) {
 		const rem_year1 = total_days1 - count_days1;
 		let sum = 0;
-		for (i = year1 + 1; i < year2; i++) {
-			sum += daysOfYear(i);
-		}
+
+		for (i = year1 + 1; i < year2; i++) sum += daysOfYear(i);
+
 		return rem_year1 + count_days2 + sum;
 	}
+
 	return diff_day;
 };
 
@@ -166,6 +153,7 @@ const firstDayOfYear = (year) => {
 	const diff = diffDays(year, 1, 1, 1401, 1, 1);
 
 	const day = (default_day + diff) % 7;
+
 	if (day == 0) return 7;
 	return day;
 };
@@ -179,8 +167,8 @@ const firstDayOfMonth = (year, month) => {
 	return day;
 };
 
+// Test
 console.log(jalaliDate(2022, 12, 5));
 console.log(daysOfMonth(1401, 9));
-
 console.log(days[firstDayOfYear(1401)]); // دو شنبه
 console.log(days[firstDayOfMonth(1401, 9)]);
