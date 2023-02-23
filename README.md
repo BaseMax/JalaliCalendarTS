@@ -18,4 +18,9 @@ This is a JavaScript library that allows you to working with Jalali Calendar sys
 - `firstDayOfYear(year)`: Get first day of a Jalali year
 - `firstDayOfMonth(year, month)`: Get first day of a Jalali month
 
+## Authors
+
+- Max Base: Creator
+- Mohamad Shiralizadeh: TS package
+
 © Copyright Max Base, 2022
