@@ -1,6 +1,6 @@
 # Jalali Calendar TS (TypeScript)
 
-This is a TypeScript/JavaScript library that allows you to working with Jalali Calendar system.
+This is a TypeScript library that allows you to working with Jalali Calendar system.
 
 ## Functions
 
